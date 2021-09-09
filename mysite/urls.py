@@ -21,9 +21,9 @@ from users import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/gettoken/', obtain_auth_token),
     path('api/register/', views.UserRegister.as_view()),
     path('api/verification/', views.UserEmailVerification.as_view()),
     path('api/login/', views.UserLogIn.as_view()),
     path('api/logout/', views.UserLogout.as_view()),
-    path('api/gettoken/', obtain_auth_token),
 ]

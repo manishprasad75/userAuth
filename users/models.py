@@ -12,7 +12,7 @@ class OTP(models.Model):
 
 
 class UserProfile(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     is_valid = models.BooleanField(default=False)
 
 

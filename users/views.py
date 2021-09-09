@@ -164,6 +164,9 @@ class UserLogIn(APIView):
         user = authenticate(request, username=email, password=password)
 
         if user is not None:
+            if not user.profile.is_valid:
+                return JsonResponse({'msg': "Error Email not verified"}, status=403)
+
             login(request, user)
             return JsonResponse({'msg': "Login Successfully"})
         else:
